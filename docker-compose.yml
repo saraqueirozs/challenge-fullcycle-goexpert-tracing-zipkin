@@ -1,0 +1,59 @@
+services:
+    service-1:
+        build:
+            context: ./service1
+            dockerfile: Dockerfile
+        container_name: service-1
+        ports:
+            - "8080:8080"
+        depends_on:
+            - service-2
+            - otel-collector
+            - zipkin
+        environment:
+            - SERVICE_2_URL=http://service-2:8080
+            - OTEL_SERVICE_NAME=service-1
+            - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+        networks:
+            - challenge-fullcycle-goexpert-tracing-zipkin
+
+    service-2:
+        build:
+            context: ./service2
+            dockerfile: Dockerfile
+        container_name: service-2
+        ports:
+            - "8081:8080"
+        depends_on:
+            - otel-collector
+            - zipkin
+        environment:
+            - API_KEY=6782cdbde8f3426a86b14915240912
+            - OTEL_SERVICE_NAME=service-2
+            - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+        networks:
+            - challenge-fullcycle-goexpert-tracing-zipkin
+
+    otel-collector:
+        image: otel/opentelemetry-collector:latest
+        command: [ "--config=/etc/otel-collector-config.yaml" ]
+        volumes:
+            - ./config/otel/config.yaml:/etc/otel-collector-config.yaml:ro
+        ports:
+            - "4318:4318"
+            - "4317:4317"
+        networks:
+            - challenge-fullcycle-goexpert-tracing-zipkin
+
+    zipkin:
+        image: openzipkin/zipkin
+        ports:
+            - "9411:9411"
+        depends_on:
+            - otel-collector
+        networks:
+            - challenge-fullcycle-goexpert-tracing-zipkin
+
+networks:
+    challenge-fullcycle-goexpert-tracing-zipkin:
+        driver: bridge
