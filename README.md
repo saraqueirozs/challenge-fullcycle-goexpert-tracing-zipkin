@@ -1,7 +1,5 @@
-## Desafio
-
 ## Objetivo
-Este desafio faz parte da Pós-Graduação em Go FullCycle, "Labs". O objetivo principal é desenvolver um sistema em Go que receba um CEP, identifica a cidade e retorna o clima atual (temperatura em graus
+Este desafio faz parte da pós-graduação em go FullCycle, "Labs". O objetivo principal é desenvolver um sistema em Go que receba um CEP, identifica a cidade e retorna o clima atual (temperatura em graus
 celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin. 
 
 ## Serviço 1 (input):
