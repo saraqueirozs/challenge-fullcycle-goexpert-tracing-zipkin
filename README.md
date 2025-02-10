@@ -8,14 +8,14 @@ celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin.
 
 ### Serviço 1 (input):
 
-- Receber um input de 8 dígitos via POST, através do schema: `{ "cep": "" }`
+- Receber um input de 8 dígitos via POST, através do schema: `{ "cep": "29902555" }`
 - Validar se o input é válido (contém 8 dígitos) e se é uma STRING
 - Se válido, encaminhar para o Serviço 2 via HTTP
 - Se inválido, retornar:
 	- Código HTTP: 422
 	- Mensagem: "invalid zipcode"
 
-### Requisitos - Serviço 2 (orquestração):
+### Serviço 2 (orquestração):
 
 - Receber um CEP válido de 8 dígitos
 - Realizar a pesquisa do CEP e encontrar o nome da localização
@@ -39,7 +39,7 @@ celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin.
 			- Código HTTP: 404
 			- Mensagem: "can not find zipcode"
 
-### Implementação OTEL + Zipkin:
+### OTEL + Zipkin:
 
 - Implementar tracing distribuído entre Serviço 1 - Serviço 2
 - Utilizar span para medir o tempo de resposta do serviço de busca de CEP e busca de temperatura
@@ -76,13 +76,5 @@ O serviço retornará as informações de temperatura para o CEP fornecido.
 
 
 ```
-curl -X POST http://localhost:8080 -H "Content-Type: application/json" -d '{"cep": "11608545"}'
+curl -X POST http://localhost:8080 -H "Content-Type: application/json" -d '{"cep": "29902555"}'
 ```
-
-## Rastreamento
-
-Este projeto utiliza OpenTelemetry para rastreamento distribuído. Você pode visualizar os rastros usando Zipkin.
-
-## Configuração
-
-O diretório `config/otel` contém arquivos de configuração para o Coletor OpenTelemetry.
