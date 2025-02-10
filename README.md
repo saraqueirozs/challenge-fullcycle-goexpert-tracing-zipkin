@@ -1,9 +1,7 @@
 ## Desafio
 
 ### Objetivo
-Este desafio faz parte da Pós-Graduação em Go FullCycle, em laboratório. E deverá informar condições meteorológicas baseadas em CEP, utilizando OpenTelemetry.
-
-Desenvolver um sistema em Go que receba um CEP, identifica a cidade e retorna o clima atual (temperatura em graus
+Este desafio faz parte da Pós-Graduação em Go FullCycle, "Labs". O objetivo principal é desenvolver um sistema em Go que receba um CEP, identifica a cidade e retorna o clima atual (temperatura em graus
 celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin. 
 
 ### Serviço 1 (input):
