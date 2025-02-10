@@ -1,10 +1,10 @@
 ## Desafio
 
-### Objetivo
+## Objetivo
 Este desafio faz parte da Pós-Graduação em Go FullCycle, "Labs". O objetivo principal é desenvolver um sistema em Go que receba um CEP, identifica a cidade e retorna o clima atual (temperatura em graus
 celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin. 
 
-### Serviço 1 (input):
+## Serviço 1 (input):
 
 - Receber um input de 8 dígitos via POST, através do schema: `{ "cep": "29902555" }`
 - Validar se o input é válido (contém 8 dígitos) e se é uma STRING
@@ -13,7 +13,7 @@ celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin.
 	- Código HTTP: 422
 	- Mensagem: "invalid zipcode"
 
-### Serviço 2 (orquestração):
+## Serviço 2 (orquestração):
 
 - Receber um CEP válido de 8 dígitos
 - Realizar a pesquisa do CEP e encontrar o nome da localização
@@ -47,7 +47,7 @@ celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin.
 - Docker
 - Docker Compose
 
-## Como Executar o Projeto em Ambiente de Desenvolvimento
+## Executando o projeto
 
 1. Clone o repositório:
 
@@ -68,9 +68,9 @@ celsius, fahrenheit e kelvin) juntamente com a cidade e incluir OTEL e zipkin.
 	- Service2: http://localhost:8081
 	- Coletor OpenTelemetry: http://localhost:4318
 
-## Passo a passo
+## Curl
 
-O serviço retornará as informações de temperatura para o CEP fornecido.
+O serviço retornará as informações de temperatura para o CEP fornecido. Use o exemplo abaixo, altere o cep conforme necessário.
 
 
 ```
